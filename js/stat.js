@@ -19,16 +19,11 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 var getMaxElement = function (arr) {
-  for (var i = 0; i < arr.length; i++) {
-    var maxElement = arr[i];
+  var maxElement = arr[0];
 
-    for (var j = i + 1; j < arr.length; j++) {
-      if (arr[j] > maxElement) {
-        maxElement = arr[j];
-        var swap = arr[i];
-        arr[i] = maxElement;
-        arr[j] = swap;
-      }
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
     }
   }
 
@@ -50,7 +45,7 @@ window.renderStatistics = function (ctx, players, times) {
   for (var i = 0; i < players.length; i++) {
     ctx.fillText(players[i], CLOUD_X + FONT_GAP * 2 + (GAP + BAR_WIDTH) * i, CLOUD_HEIGHT - CLOUD_Y);
 
-    if (players[i] === 'Вы' ) {
+    if (players[i] === 'Вы') {
       ctx.fillStyle = barColorMain;
     } else {
       ctx.fillStyle = 'lightgreen';
