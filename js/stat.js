@@ -48,7 +48,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  var calculatedBarHeigth = function (index) {
+  var calculatedBarHeight = function (index) {
     return barHeight * times[index] / maxTime;
   };
 
@@ -61,8 +61,8 @@ window.renderStatistics = function (ctx, players, times) {
       ctx.fillStyle = barColorOthers();
     }
 
-    ctx.fillRect(getBarX(i), barY, BAR_WIDTH, -calculatedBarHeigth(i));
+    ctx.fillRect(getBarX(i), barY, BAR_WIDTH, -calculatedBarHeight(i));
     ctx.fillStyle = fontColor;
-    ctx.fillText(Math.round(times[i]), getBarX(i), barY - calculatedBarHeigth(i) - 10);
+    ctx.fillText(Math.round(times[i]), getBarX(i), barY - calculatedBarHeight(i) - 10);
   }
 };
