@@ -1,6 +1,5 @@
 'use strict';
 
-var WIZARD_NAMES = ['Дамблдор', 'Волдеморт', 'Доктор Стрендж', 'Гарри Поттер'];
 var NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -59,10 +58,6 @@ var getRandomEyesColor = function (eyes) {
   return eyes[getRandomNumber(0, eyes.length)];
 };
 
-console.log(getRandomFullName(NAMES, SURNAMES));
-console.log(getRandomCoatColor(COAT_COLOR));
-console.log(getRandomEyesColor(EYES_COLOR));
-
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
@@ -71,16 +66,6 @@ var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
-
-var wizardss = function () {
-  for (var i = 0; i < arr.length; i++) {
-    {
-      name: getRandomFullName(NAMES, SURNAMES),
-        coatColor: getRandomCoatColor(COAT_COLOR),
-      eyesColor: getRandomEyesColor(EYES_COLOR)
-    }
-  }
-};
 
 var wizards = [
   {
