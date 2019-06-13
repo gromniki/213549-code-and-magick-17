@@ -40,20 +40,18 @@ var EYES_COLOR = [
   'green'
 ];
 
-var getRandomData = function (name, surname) {
-  var fullName = '';
-
-  fullName += name[Math.floor(Math.random() * name.length)];
-  // for (var i = 0; i < name.length; i++) {
-  //   fullName += name[Math.floor(Math.random() * name.length)];
-  //
-  //   console.log('Имя: ' + fullName);
-  // }
-
-  return fullName;
+var getRandomNumber = function (min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
-console.log(getRandomData(NAMES));
+var getRandomData = function (names, surnames) {
+  var name = names[getRandomNumber(0, names.length)];
+  var surname = surnames[getRandomNumber(0, surnames.length)];
+
+  return name + ' ' + surname;
+};
+
+console.log(getRandomData(NAMES, SURNAMES));
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -67,20 +65,20 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 
 var wizards = [
   {
-    name: WIZARD_NAMES[0],
+    name: getRandomData(NAMES, SURNAMES),
     coatColor: 'rgb(241, 43, 107)',
     eyesColor: 'black'
   },
   {
-    name: WIZARD_NAMES[1],
+    name: getRandomData(NAMES, SURNAMES),
     coatColor: 'rgb(215, 210, 55)'
   },
   {
-    name: WIZARD_NAMES[2],
+    name: getRandomData(NAMES, SURNAMES),
     coatColor: 'rgb(101, 137, 164)'
   },
   {
-    name: WIZARD_NAMES[3],
+    name: getRandomData(NAMES, SURNAMES),
     coatColor: 'rgb(127, 127, 127)'
   }
 ];
