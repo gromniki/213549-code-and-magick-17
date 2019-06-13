@@ -44,14 +44,24 @@ var getRandomNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var getRandomData = function (names, surnames) {
+var getRandomFullName = function (names, surnames) {
   var name = names[getRandomNumber(0, names.length)];
   var surname = surnames[getRandomNumber(0, surnames.length)];
 
   return name + ' ' + surname;
 };
 
-console.log(getRandomData(NAMES, SURNAMES));
+var getRandomCoatColor = function (coats) {
+  return coats[getRandomNumber(0, coats.length)];
+};
+
+var getRandomEyesColor = function (eyes) {
+  return eyes[getRandomNumber(0, eyes.length)];
+};
+
+console.log(getRandomFullName(NAMES, SURNAMES));
+console.log(getRandomCoatColor(COAT_COLOR));
+console.log(getRandomEyesColor(EYES_COLOR));
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -62,24 +72,36 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
+var wizardss = function () {
+  for (var i = 0; i < arr.length; i++) {
+    {
+      name: getRandomFullName(NAMES, SURNAMES),
+        coatColor: getRandomCoatColor(COAT_COLOR),
+      eyesColor: getRandomEyesColor(EYES_COLOR)
+    }
+  }
+};
 
 var wizards = [
   {
-    name: getRandomData(NAMES, SURNAMES),
-    coatColor: 'rgb(241, 43, 107)',
-    eyesColor: 'black'
+    name: getRandomFullName(NAMES, SURNAMES),
+    coatColor: getRandomCoatColor(COAT_COLOR),
+    eyesColor: getRandomEyesColor(EYES_COLOR)
   },
   {
-    name: getRandomData(NAMES, SURNAMES),
-    coatColor: 'rgb(215, 210, 55)'
+    name: getRandomFullName(NAMES, SURNAMES),
+    coatColor: getRandomCoatColor(COAT_COLOR),
+    eyesColor: getRandomEyesColor(EYES_COLOR)
   },
   {
-    name: getRandomData(NAMES, SURNAMES),
-    coatColor: 'rgb(101, 137, 164)'
+    name: getRandomFullName(NAMES, SURNAMES),
+    coatColor: getRandomCoatColor(COAT_COLOR),
+    eyesColor: getRandomEyesColor(EYES_COLOR)
   },
   {
-    name: getRandomData(NAMES, SURNAMES),
-    coatColor: 'rgb(127, 127, 127)'
+    name: getRandomFullName(NAMES, SURNAMES),
+    coatColor: getRandomCoatColor(COAT_COLOR),
+    eyesColor: getRandomEyesColor(EYES_COLOR)
   }
 ];
 
@@ -88,6 +110,7 @@ var renderWizard = function (wizard) {
 
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
 };
