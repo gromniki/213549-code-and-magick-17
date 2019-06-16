@@ -42,6 +42,14 @@ var EYES_COLORS = [
   'green'
 ];
 
+var FIREBALL_COLORS = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
 var WIZARDS_NUMBER = 4;
 
 var getRandomNumber = function (min, max) {
@@ -57,8 +65,10 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
+var userNameInput = setup.querySelector('.setup-user-name');
+
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && !userNameInput.focus()) {
     closePopup();
   }
 };
@@ -96,9 +106,6 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-
-var userNameInput = setup.querySelector('.setup-user-name');
-
 userNameInput.addEventListener('invalid', function (evt) {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
@@ -118,6 +125,36 @@ userNameInput.addEventListener('input', function (evt) {
   } else {
     target.setCustomValidity('');
   }
+});
+
+var userPlayer = document.querySelector('.setup-player');
+var wizardCoat = userPlayer.querySelector('.wizard-coat');
+var wizardEyes = userPlayer.querySelector('.wizard-eyes');
+var wizardFireball = userPlayer.querySelector('.setup-fireball-wrap');
+
+var inputCoat = userPlayer.querySelector('[name=coat-color]');
+var inputEyes = userPlayer.querySelector('[name=eyes-color]');
+var inputFireball = userPlayer.querySelector('[name=fireball-color]');
+
+wizardCoat.addEventListener('click', function () {
+  var coatColor = getRandomElement(COAT_COLORS);
+
+  wizardCoat.style.fill = coatColor;
+  inputCoat.value = coatColor;
+});
+
+wizardEyes.addEventListener('click', function () {
+  var eyesColor = getRandomElement(EYES_COLORS);
+
+  wizardEyes.style.fill = eyesColor;
+  inputEyes.value = eyesColor;
+});
+
+wizardFireball.addEventListener('click', function () {
+  var fireballColor = getRandomElement(FIREBALL_COLORS);
+
+  wizardFireball.style.backgroundColor = fireballColor;
+  inputFireball.value = fireballColor;
 });
 
 var similarListElement = setup.querySelector('.setup-similar-list');
