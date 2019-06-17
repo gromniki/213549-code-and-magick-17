@@ -68,16 +68,21 @@ var setupClose = setup.querySelector('.setup-close');
 var userNameInput = setup.querySelector('.setup-user-name');
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && !userNameInput.focus()) {
+  if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
 };
 
-// && !userNameInput.focus()
+userNameInput.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+userNameInput.addEventListener('blur', function () {
+  document.addEventListener('keydown', onPopupEscPress);
+});
 
 var openPopup = function () {
   setup.classList.remove('hidden');
-
   document.addEventListener('keydown', onPopupEscPress);
 };
 
@@ -106,7 +111,7 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
