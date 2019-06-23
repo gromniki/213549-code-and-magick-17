@@ -61,7 +61,6 @@
     return array[getRandomNumber(0, array.length)];
   };
 
-
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
@@ -69,7 +68,13 @@
   var userNameInput = setup.querySelector('.setup-user-name');
 
   window.setup = {
-    setup: setup
+    setup: setup,
+    coords: {
+      start: {
+        x: 50,
+        y: 80
+      }
+    }
   };
 
   var onPopupEscPress = function (evt) {
@@ -94,6 +99,8 @@
   var closePopup = function () {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    window.setup.setup.style.top = window.setup.coords.start.y + 'px';
+    window.setup.setup.style.left = window.setup.coords.start.x + '%';
   };
 
   setupOpen.addEventListener('click', function () {
