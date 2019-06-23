@@ -35,8 +35,8 @@
       upEvt.preventDefault();
 
       if (dragged) {
-        var onClickPreventDefault = function (evt) {
-          evt.preventDefault();
+        var onClickPreventDefault = function (dragEvt) {
+          dragEvt.preventDefault();
           dialogHandler.removeEventListener('click', onClickPreventDefault);
         };
         dialogHandler.addEventListener('click', onClickPreventDefault);
@@ -50,5 +50,5 @@
     document.addEventListener('mouseup', onMouseUp);
   });
 
-  console.log('Модуль dialog проинициализирован!');
+  // console.log('Модуль dialog проинициализирован!');
 })();
