@@ -215,6 +215,4 @@
   renderWizards(generateWizardsData());
 
   setup.querySelector('.setup-similar').classList.remove('hidden');
-
-  // console.log('Модуль setup проинициализирован');
 })();

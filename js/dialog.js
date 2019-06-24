@@ -49,6 +49,4 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
-  // console.log('Модуль dialog проинициализирован!');
 })();
