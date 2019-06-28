@@ -14,6 +14,12 @@
       if (evt.keyCode === ENTER_KEYCODE) {
         action();
       }
+    },
+    getRandomNumber: function (min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    },
+    getRandomElement: function (array) {
+      return array[getRandomNumber(0, array.length)];
     }
   };
 
