@@ -19,8 +19,7 @@
       return Math.floor(Math.random() * (max - min)) + min;
     },
     getRandomElement: function (array) {
-      return array[getRandomNumber(0, array.length)];
+      return array[this.getRandomNumber(0, array.length)];
     }
   };
-
 })();

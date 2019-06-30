@@ -71,7 +71,5 @@
 
   renderWizards(generateWizardsData());
 
-  window.util.setup.querySelector('.setup-similar').classList.remove('hidden');
-
-  console.log('wizard init');
+  window.setup.setup.querySelector('.setup-similar').classList.remove('hidden');
 })();

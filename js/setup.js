@@ -71,7 +71,7 @@
       }
     },
     userNameInput: userNameInput
-};
+  };
 
   var onPopupEscPress = function (evt) {
     window.util.isEscEvent(evt, closePopup);
