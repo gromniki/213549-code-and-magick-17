@@ -53,7 +53,6 @@
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
-
   var userNameInput = setup.querySelector('.setup-user-name');
 
   window.setup = {
@@ -63,14 +62,14 @@
     EYES_COLORS: EYES_COLORS,
     FIREBALL_COLORS: FIREBALL_COLORS,
     WIZARDS_NUMBER: WIZARDS_NUMBER,
-    setup: setup,
+    setup: document.querySelector('.setup'),
     coords: {
       start: {
         x: 50,
         y: 80
       }
     },
-    userNameInput: userNameInput
+    userNameInput: document.querySelector('.setup-user-name')
   };
 
   var onPopupEscPress = function (evt) {
