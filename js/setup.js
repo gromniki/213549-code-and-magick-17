@@ -50,65 +50,12 @@
 
   var WIZARDS_NUMBER = 4;
 
-  var setup = document.querySelector('.setup');
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = setup.querySelector('.setup-close');
-  var userNameInput = setup.querySelector('.setup-user-name');
-
   window.setup = {
     NAMES: NAMES,
     SURNAMES: SURNAMES,
     COAT_COLORS: COAT_COLORS,
     EYES_COLORS: EYES_COLORS,
     FIREBALL_COLORS: FIREBALL_COLORS,
-    WIZARDS_NUMBER: WIZARDS_NUMBER,
-    setup: document.querySelector('.setup'),
-    coords: {
-      start: {
-        x: 50,
-        y: 80
-      }
-    },
-    userNameInput: document.querySelector('.setup-user-name')
+    WIZARDS_NUMBER: WIZARDS_NUMBER
   };
-
-  var onPopupEscPress = function (evt) {
-    window.util.isEscEvent(evt, closePopup);
-  };
-
-  userNameInput.addEventListener('focus', function () {
-    document.removeEventListener('keydown', onPopupEscPress);
-  });
-
-  userNameInput.addEventListener('blur', function () {
-    document.addEventListener('keydown', onPopupEscPress);
-  });
-
-  var openPopup = function () {
-    setup.classList.remove('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
-  };
-
-  var closePopup = function () {
-    setup.classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
-    setup.style.top = window.setup.coords.start.y + 'px';
-    setup.style.left = window.setup.coords.start.x + '%';
-  };
-
-  setupOpen.addEventListener('click', function () {
-    openPopup();
-  });
-
-  setupOpen.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, openPopup);
-  });
-
-  setupClose.addEventListener('click', function () {
-    closePopup();
-  });
-
-  setupClose.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, closePopup);
-  });
 })();

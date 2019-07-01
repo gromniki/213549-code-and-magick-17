@@ -31,7 +31,7 @@
     inputFireball.value = fireballColor;
   });
 
-  var similarListElement = window.setup.setup.querySelector('.setup-similar-list');
+  var similarListElement = window.form.setup.querySelector('.setup-similar-list');
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
@@ -71,5 +71,5 @@
 
   renderWizards(generateWizardsData());
 
-  window.setup.setup.querySelector('.setup-similar').classList.remove('hidden');
+  window.form.setup.querySelector('.setup-similar').classList.remove('hidden');
 })();
