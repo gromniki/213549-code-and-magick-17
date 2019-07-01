@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var dialogHandler = window.setup.setup.querySelector('.upload');
+  var dialogHandler = window.form.setup.querySelector('.upload');
 
   dialogHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -27,8 +27,8 @@
         y: moveEvt.clientY
       };
 
-      window.setup.setup.style.top = (window.setup.setup.offsetTop - shift.y) + 'px';
-      window.setup.setup.style.left = (window.setup.setup.offsetLeft - shift.x) + 'px';
+      window.form.setup.style.top = (window.form.setup.offsetTop - shift.y) + 'px';
+      window.form.setup.style.left = (window.form.setup.offsetLeft - shift.x) + 'px';
     };
 
     var onMouseUp = function (upEvt) {
@@ -48,5 +48,38 @@
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
+  });
+
+  var shopElement = document.querySelector('.setup-artifacts-shop');
+  var draggedItem = null;
+
+  shopElement.addEventListener('dragstart', function (evt) {
+    if (evt.target.tagName.toLowerCase() === 'img') {
+      draggedItem = evt.target;
+      evt.dataTransfer.setData('text/plain', evt.target.alt);
+    }
+  });
+
+  var artifactsElement = document.querySelector('.setup-artifacts');
+
+  artifactsElement.addEventListener('dragover', function (evt) {
+    evt.preventDefault();
+    return false;
+  });
+
+  artifactsElement.addEventListener('drop', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.target.appendChild(draggedItem);
+  });
+
+
+  artifactsElement.addEventListener('dragenter', function (evt) {
+    evt.target.style.backgroundColor = 'yellow';
+    evt.preventDefault();
+  });
+
+  artifactsElement.addEventListener('dragleave', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.preventDefault();
   });
 })();
